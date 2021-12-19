@@ -1,6 +1,7 @@
-package com.example.demo.controller;
+package com.example.demo.webSocket;
 
 import com.example.demo.config.NettyConfig;
+import com.example.demo.controller.TestController;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
@@ -15,9 +16,9 @@ import io.netty.handler.codec.http.websocketx.*;
 import io.netty.util.CharsetUtil;
 
 /**
- * 接受/处理/响应客户端websocke请求的核心业务处理类
+ * 接受/处理/响应客户端websocket请求的核心业务处理类
  */
-public class MyWebSockeHandler extends SimpleChannelInboundHandler<Object> {
+public class MyWebSocketHandler extends SimpleChannelInboundHandler<Object> {
 
     private WebSocketServerHandshaker webSocketServerHandshaker;
     private static final String WEB_SOCKET_URL = "ws://localhost:8888/webSocket";
@@ -45,7 +46,7 @@ public class MyWebSockeHandler extends SimpleChannelInboundHandler<Object> {
         throwable.printStackTrace();
         context.close();
     }
-    //服务端处理客户端websocke请求的核心方法
+    //服务端处理客户端websocket请求的核心方法
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, Object o) throws Exception {
         //处理客户端向服务端发起的http握手请求

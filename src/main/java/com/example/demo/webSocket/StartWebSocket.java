@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.webSocket;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
@@ -13,10 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class StartWebSocket {
 
-    @GetMapping(value = "/action/webSocket")
+//    @GetMapping(value = "/action/webSocket")
     public static void action(){
+        //netty通信通过io线程EventLoop进行管理
+        //EventLoopGroup 是一组 EventLoop 的抽象，一个 EventLoopGroup 当中会包含一个或多个 EventLoop，
+        //EventLoopGroup 提供 next 接口，可以从一组 EventLoop 里面按照一定规则获取其中一个 EventLoop 来处理任务。
+
+        //监控TCP连接
         EventLoopGroup eventLoopGroup = new NioEventLoopGroup();
+        //监控IO操作
         EventLoopGroup workGroup = new NioEventLoopGroup();
+
         try {
             //开启服务端
             ServerBootstrap serverBootstrap = new ServerBootstrap();

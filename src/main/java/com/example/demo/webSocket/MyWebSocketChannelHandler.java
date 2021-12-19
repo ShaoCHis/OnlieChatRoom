@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.webSocket;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
@@ -16,6 +16,6 @@ public class MyWebSocketChannelHandler extends ChannelInitializer<SocketChannel>
         e.pipeline().addLast("http-codec",new HttpServerCodec());
         e.pipeline().addLast("aggregator",new HttpObjectAggregator(65536));
         e.pipeline().addLast("http-chunked",new ChunkedWriteHandler());
-        e.pipeline().addLast("handler",new MyWebSockeHandler());
+        e.pipeline().addLast("handler",new MyWebSocketHandler());
     }
 }
