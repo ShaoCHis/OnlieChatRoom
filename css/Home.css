@@ -1,0 +1,176 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+body {
+    background: url(../Pictures/background/back.jpg) no-repeat center 0 fixed;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    font-family: "微软雅黑", sans-serif;
+}
+
+.tubiao{
+    position: absolute;
+    right: 1%;
+}
+.BoxHead{
+    width: 100%;
+    height: 8%;
+    background-color: RGBA(255,255,255,0.3);
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+}
+.internetName{
+    position: absolute;
+    left: 60%;
+    height: 52px;
+    line-height: 52px;
+    color: black;
+    font-size: 20px;
+}
+
+.ChatRoom {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    /*margin: -150px 0 0 -150px;*/
+    width:70%;
+    height:70%;
+    background-color: RGBA(255,255,255,0.3);
+}
+
+.PersonalInformation{
+    position: absolute;
+    top: 8%;
+    width:20%;
+    height:12%;
+    background-color: RGBA(255,255,255,0.4);
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+}
+
+.Menu{
+    background-color: RGBA(255,255,255,0.5);
+    position: absolute;
+    top: 20%;
+    width:20%;
+    height:8%;
+}
+.Menu .friends{
+    position: absolute;
+    right: 15%;
+    top: 12%;
+    padding: 5px 10px;
+    color: black;
+    type:text;
+    background-color:RGBA(255,255,255,0.5);
+}
+.Menu .cancel{
+    position: absolute;
+    left: 15%;
+    top: 12%;
+    padding: 5px 10px;
+    color: white;
+    background-color: cornflowerblue;
+}
+
+.InformationList{
+    /*background-color: RGBA(255,255,255,0.4);*/
+    background-color: red;
+    position: absolute;
+    top: 28%;
+    width:20%;
+    height:65%;
+}
+.InformationList ul{
+    list-style: none;
+    position: absolute;
+    width:100%;
+    overflow: scroll;
+    height:100%;
+}
+.InformationList ul li{
+    display: -webkit-box;
+    margin-top: 5px;
+    background-color: oldlace;
+}
+.InformationList ul li img{
+    width: 45px;
+}
+.InformationList ul li span{
+    position: absolute;
+    width: auto;
+    margin-top: 13px;
+    right: 70px;
+    color: black;
+}
+
+.InformationMenu{
+    background-color: RGBA(255,255,255,0.5);
+    position: absolute;
+    top: 93%;
+    width:20%;
+    height:7%;
+}
+.InformationMenu .delete{
+    position: absolute;
+    right: 10%;
+    top: 12%;
+    padding: 5px 10px;
+    color: black;
+    type:text;
+    background-color:RGBA(255,0,0,0.4);
+}
+.InformationMenu .add{
+    position: absolute;
+    left: 10%;
+    top: 12%;
+    padding: 5px 10px;
+    color: white;
+    background-color: RGBA(0,255,0,0.6);
+}
+
+.ChatRoom textarea{
+    background-color: RGBA(255,255,255,0.4);
+    position: absolute;
+    left: 20%;
+    readonly:"readonly";
+    width: 80%;
+    height: 75%;
+    resize:none;
+}
+
+.SendMessage{
+    background-color: RGBA(255,255,255,0.4);
+    position: absolute;
+    width: 80%;
+    left: 20%;
+    height: 17%;
+    top: 83%;
+}
+.SendMessage textarea{
+    background-color: RGBA(255,255,255,0.4);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    font-size: 20px;
+}
+.SendMessage button{
+    position: absolute;
+    right: 15%;
+    top: 55%;
+    padding: 5px 10px;
+    color: white;
+    background-color: cornflowerblue;
+}
+.SendMessage .cancel{
+    position: absolute;
+    right: 5%;
+    top: 55%;
+    padding: 5px 10px;
+    color: black;
+    background-color: white;
+}

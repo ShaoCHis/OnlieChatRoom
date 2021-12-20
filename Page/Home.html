@@ -4,25 +4,93 @@
     <meta charset="UTF-8">
     <title>聊天室</title>
     <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+    <link style="text:css" href="../css/Home.css" rel="stylesheet"/>
 </head>
 <body>
-<h1>聊天室</h1>
-
-<textarea id="chat_content" readonly="readonly" cols="100" rows="9">
-
-</textarea>
-
-<br>
 
 用户：<input type="text" id="user_name" value="" name="userName"/>
 <button id="btn_join">加入聊天室</button>
 <button id="btn_exit">退出聊天室</button>
 
-<br>
+<div class="ChatRoom">
+    <div class="BoxHead">
+        <div class="internetName">张三</div>
+        <div class="tubiao">
+            <span><img style="width: 20px; margin: 15px 5px;" src="../Pictures/icon/xiao.png" alt=""></span>
+            <span><img style="width: 20px; margin: 15px 5px;" src="../Pictures/icon/da.png" alt=""></span>
+            <span><img style="width: 20px; margin: 15px 5px;" src="../Pictures/icon/iocnqx.png" alt=""></span>
+        </div>
+    </div>
 
-消息：<input type="text" id="send_text" value="" name="sendText"/>
-<button id="btn_send">发送</button>
+    <textarea id="chat_content"></textarea>
 
+    <div class="PersonalInformation">
+        <div style="height: 20%;">
+            <img src="../Pictures/img/touxiang1.png" alt="">
+        </div>
+        <span style=" width: auto;
+              text-align: center;
+              line-height: 56px;
+              color: white;">ShaoCHi</span>
+<!--        修改个人信息按钮-->
+        <div style="height: 20%;width: 30px;margin-left: 30px;margin-top: 15px">
+            <img src="../Pictures/icon/fix.png" alt="" style="width: 140%;height: 300%">
+        </div>
+    </div>
+
+    <div class="Menu">
+        <button class="friends">好友</button>
+        <button class="cancel">消息</button>
+    </div>
+
+    <div class="InformationList">
+        <ul>
+            <li>
+                <img src="../Pictures/img/touxiang1.png" alt="">
+                <span>布莱恩</span>
+            </li>
+            <li>
+                <img src="../Pictures/img/touxiang1.png" alt="">
+                <span>布莱恩</span>
+            </li>
+            <li>
+                <img src="../Pictures/img/touxiang1.png" alt="">
+                <span>布莱恩</span>
+            </li>
+            <li>
+                <img src="../Pictures/img/touxiang1.png" alt="">
+                <span>布莱恩</span>
+            </li>
+            <li>
+                <img src="../Pictures/img/touxiang1.png" alt="">
+                <span>布莱恩</span>
+            </li>
+            <li>
+                <img src="../Pictures/img/touxiang1.png" alt="">
+                <span>布莱恩</span>
+            </li>
+            <li>
+                <img src="../Pictures/img/touxiang1.png" alt="">
+                <span>布莱恩</span>
+            </li>
+            <li>
+                <img src="../Pictures/img/touxiang1.png" alt="">
+                <span>布莱恩</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="InformationMenu">
+        <button class="delete">删除好友</button>
+        <button class="add">添加好友</button>
+    </div>
+
+    <div class="SendMessage">
+        <textarea id="send_text"></textarea>
+        <button id="btn_send">发送</button>
+        <button class="cancel">取消</button>
+    </div>
+</div>
 </body>
 </html>
 
@@ -53,6 +121,7 @@
             }
 
             //接收到消息的回调方法
+            //对onmessage进行处理，显示私聊消息；
             ws.onmessage = function (event) {
                 console.log('接收到内容：' + event.data)
                 $('#chat_content').append(event.data + '\n')
@@ -82,14 +151,21 @@
 
         //监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
         window.onbeforeunload = function () {
-            wx.close();
+            ws.close();
         }
 
 
         //发送消息
         $('#btn_send').click(function () {
+            console.log("1")
             sendMessage($('#send_text').val())
         })
+        //监听键盘事件
+        $("#send_text").keydown(function(event){
+            if(event.keyCode==13){
+                sendMessage($('#send_text').val())
+            }
+        });
 
         //点击退出聊天室
         $('#btn_exit').click(function () {

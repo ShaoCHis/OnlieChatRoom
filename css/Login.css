@@ -3,7 +3,7 @@
     box-sizing:border-box;
 }
 body {
-    background: url(../Pictures/1.jpg) no-repeat center 0 fixed;
+    background: url(../Pictures/background/1.jpg) no-repeat center 0 fixed;
     background-size: cover;
     font-family: "微软雅黑", sans-serif;
 }
