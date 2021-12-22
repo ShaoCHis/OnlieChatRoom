@@ -24,7 +24,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 650px;
+    height: 50%;
     background-color: rgba(75, 81, 95, 0.3);
     box-shadow: 7px 7px 17px rgba(52, 56, 66, 0.5);
     border-radius: 5px;

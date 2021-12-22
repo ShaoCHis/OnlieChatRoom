@@ -6,15 +6,15 @@
     <link style="text:css" href="../css/Login.css" rel="stylesheet" />
 </head>
 <body>
-<div class="headtop"></div>
 <div class="login">
     <h1>Login</h1>
     <form action="" method="post">
-        <input type="text" name="user" placeholder="用户名" required="required">
-        <input type="password" name="password" placeholder="密  码" required="required">
-        <button type="submit" onclick="location='Home.html'">登录</button>
-        <button type="submit" onclick="location='Register.html'">注册</button>
+        <input value="" id="userId" placeholder="用户名" required="required">
+        <input value="" id="password" placeholder="密  码" required="required">
+        <button type="button" onclick="login()">登录</button>
+        <button onclick="location='Register.html'">注册</button>
     </form>
 </div>
 </body>
+<script type="text/javascript" src="../js/Login.js"></script>
 </html>

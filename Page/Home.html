@@ -4,17 +4,93 @@
     <meta charset="UTF-8">
     <title>聊天室</title>
     <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script src="../js/jquery.params.js"></script>
     <link style="text:css" href="../css/Home.css" rel="stylesheet"/>
 </head>
 <body>
 
-用户：<input type="text" id="user_name" value="" name="userName"/>
-<button id="btn_join">加入聊天室</button>
-<button id="btn_exit">退出聊天室</button>
+<div style="border: 1px solid #CCC;height: 150px;width:200px;overflow: scroll;position: absolute;top: 30%" id="server-msg-container">
+</div>
 
+<!--修改个人信息-->
+<dialog id="fixInformation" class="dialog">
+    <h3>修改信息</h3>
+    <br>
+    <span>密码</span>
+    <input value="" id="fixPassword" placeholder="新密码">
+    <br>
+    <br>
+    <span>性别</span>
+    <input value="" id="fixSex" placeholder="性别">
+    <br>
+    <br>
+    <span>年龄</span>
+    <input value="" id="fixAge" placeholder="年龄">
+    <br>
+    <br>
+    <button id="submit">修改</button>
+    <button id="closeDialog">取消</button>
+</dialog>
+
+<!--添加好友弹窗-->
+<dialog id="addFriendId" class="dialog">
+    <h3>添加好友</h3>
+    <br>
+    <span>朋友Id</span>
+    <input value="" id="newFriendId" placeholder="新朋友用户名">
+    <br>
+    <br>
+    <button id="addFriend" type="button">添加</button>
+    <button id="closeAddFriend" type="button">取消</button>
+</dialog>
+
+<!--删除好友弹窗-->
+<dialog id="deleteFriendId" class="dialog">
+    <h3>删除好友</h3>
+    <br>
+    <span>朋友Id</span>
+    <input value="" id="delFriendId" placeholder="朋友用户名">
+    <br>
+    <br>
+    <button id="deleteFriend" type="button">删除</button>
+    <button id="closeDeleteFriend" type="button">取消</button>
+</dialog>
+
+<!--群聊历史消息-->
+<dialog id="totalHistoryMessage" class="totalHistoryMessage" class="dialog">
+    <h3>群聊历史消息</h3>
+    <textarea id="totalHistoryMessages"></textarea>
+    <button id="closeTotalMessages" type="button">关闭</button>
+</dialog>
+
+<!--好友私聊历史消息-->
+<dialog id="totalFriendMessage" class="totalHistoryMessage" class="dialog">
+    <h3>好友私聊历史消息</h3>
+    <textarea id="totalFriendMessages"></textarea>
+    <button id="closeFriendMessages" type="button">关闭</button>
+</dialog>
+
+<!--输入好友弹窗-->
+<dialog id="inputFriend" class="dialog">
+    <h3>输入好友ID</h3>
+    <br>
+    <span>朋友ID</span>
+    <input value="" id="inputFriendId" placeholder="朋友用户名" autofocus>
+</dialog>
+
+<!--聊天框架-->
 <div class="ChatRoom">
     <div class="BoxHead">
-        <div class="internetName">张三</div>
+<!--        个人信息展示-->
+        <div>年龄：
+            <span id="age"></span>
+        </div>
+        <div class="labelSex">性别:
+            <span id="sex"></span>
+        </div>
+        <div class="internetName">聊天室</div>
+<!--        图标优化-->
         <div class="tubiao">
             <span><img style="width: 20px; margin: 15px 5px;" src="../Pictures/icon/xiao.png" alt=""></span>
             <span><img style="width: 20px; margin: 15px 5px;" src="../Pictures/icon/da.png" alt=""></span>
@@ -22,8 +98,9 @@
         </div>
     </div>
 
-    <textarea id="chat_content"></textarea>
+    <textarea id="chat_content" readonly="readonly"></textarea>
 
+<!--    个人信息展示-->
     <div class="PersonalInformation">
         <div style="height: 20%;">
             <img src="../Pictures/img/touxiang1.png" alt="">
@@ -31,145 +108,41 @@
         <span style=" width: auto;
               text-align: center;
               line-height: 56px;
-              color: white;">ShaoCHi</span>
-<!--        修改个人信息按钮-->
-        <div style="height: 20%;width: 30px;margin-left: 30px;margin-top: 15px">
+              color: white;"
+              id="name"></span>
+        <!--        修改个人信息按钮-->
+        <div style="height: 20%;width: 30px;margin-left: 30px;margin-top: 15px" id="fix">
             <img src="../Pictures/icon/fix.png" alt="" style="width: 140%;height: 300%">
         </div>
     </div>
 
+<!--    查看历史消息按钮-->
     <div class="Menu">
-        <button class="friends">好友</button>
-        <button class="cancel">消息</button>
+        <button class="friends" id="openHistory">群聊历史消息</button>
+        <button class="cancel" id="openFriendHistory">好友私聊历史</button>
     </div>
 
     <div class="InformationList">
-        <ul>
-            <li>
-                <img src="../Pictures/img/touxiang1.png" alt="">
-                <span>布莱恩</span>
-            </li>
-            <li>
-                <img src="../Pictures/img/touxiang1.png" alt="">
-                <span>布莱恩</span>
-            </li>
-            <li>
-                <img src="../Pictures/img/touxiang1.png" alt="">
-                <span>布莱恩</span>
-            </li>
-            <li>
-                <img src="../Pictures/img/touxiang1.png" alt="">
-                <span>布莱恩</span>
-            </li>
-            <li>
-                <img src="../Pictures/img/touxiang1.png" alt="">
-                <span>布莱恩</span>
-            </li>
-            <li>
-                <img src="../Pictures/img/touxiang1.png" alt="">
-                <span>布莱恩</span>
-            </li>
-            <li>
-                <img src="../Pictures/img/touxiang1.png" alt="">
-                <span>布莱恩</span>
-            </li>
-            <li>
-                <img src="../Pictures/img/touxiang1.png" alt="">
-                <span>布莱恩</span>
-            </li>
+        <ul id="friendList">
         </ul>
     </div>
 
+<!--    好友操作按钮-->
     <div class="InformationMenu">
-        <button class="delete">删除好友</button>
-        <button class="add">添加好友</button>
+        <button class="delete" type="button" id="openDelete">删除好友</button>
+        <button class="add" type="button" id="openAdd">添加好友</button>
     </div>
 
+<!--    消息操作按钮-->
     <div class="SendMessage">
         <textarea id="send_text"></textarea>
-        <button id="btn_send">发送</button>
-        <button class="cancel">取消</button>
+        <input type="file" class="file" id="file" ref="file">
+        <button type="button" id="sendFile" class="fileSend">发送文件</button>
+        <button id="btn_send" type="button">发送</button>
+        <button class="cancel" type="button">取消</button>
     </div>
 </div>
 </body>
 </html>
 
-<script>
-    $(function () {
-
-        const wsuri = "ws://localhost:8888/webSocket";
-
-        let ws;//WebSocket连接对象
-
-        //判断当前浏览器是否支持WebSocket
-        if (!('WebSocket' in window)) {
-            alert('Not support websocket');
-        }
-
-        $('#btn_join').click(function () {
-
-            let userName = $('#user_name').val();
-
-            //创建WebSocket连接对象
-            ws = new WebSocket(wsuri);
-
-            console.log("Click")
-
-            //连接成功建立的回调方法
-            ws.onopen = function (event) {
-                console.log('建立连接')
-            }
-
-            //接收到消息的回调方法
-            //对onmessage进行处理，显示私聊消息；
-            ws.onmessage = function (event) {
-                console.log('接收到内容：' + event.data)
-                $('#chat_content').append(event.data + '\n')
-            }
-
-            //连接发生错误的回调方法
-            ws.onerror = function (event) {
-                console.log('发生错误')
-            }
-
-            //连接关闭的回调方法
-            ws.onclose = function (event) {
-                console.log('关闭连接')
-            }
-
-        })
-
-        //发送消息
-        function sendMessage(message) {
-            ws.send(message);
-        }
-
-        //关闭连接
-        function closeWebSocket() {
-            ws.close();
-        }
-
-        //监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
-        window.onbeforeunload = function () {
-            ws.close();
-        }
-
-
-        //发送消息
-        $('#btn_send').click(function () {
-            console.log("1")
-            sendMessage($('#send_text').val())
-        })
-        //监听键盘事件
-        $("#send_text").keydown(function(event){
-            if(event.keyCode==13){
-                sendMessage($('#send_text').val())
-            }
-        });
-
-        //点击退出聊天室
-        $('#btn_exit').click(function () {
-            closeWebSocket();
-        })
-    })
-</script>
+<script type="text/javascript" src="../js/Home.js"></script>

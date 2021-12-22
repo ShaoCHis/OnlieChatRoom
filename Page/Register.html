@@ -12,20 +12,9 @@
     <form action="">
         <h1>REGISTER</h1>
         <p>用户姓名:<input autofocus id="userName" required type="text"><label id="name_trip"></label></p>
+        <p>用户年龄:<input id="userAge" required type="text"><label id="age_trip"></label></p>
         <p>用户密码:<input id="password" required type="password"><label id="password_trip"></label></p>
         <p>确认密码:<input id="surePassword" required type="password"><label id="surePassword_trip"></label></p>
-        <p>
-            用户类型:
-            <select id="userType" name="type">
-
-                <option value="0">请选择</option>
-
-                <option value="1">普通类型</option>
-
-                <option value="2">VIP类型</option>
-            </select>
-            <label id="type_trip"></label>
-        </p>
         <div class="sexDiv">
             用户性别:
             <input class="userSex" name="sex" type="radio" value="boy">男
@@ -33,19 +22,8 @@
             <label id="sex_trip"></label>
         </div>
         <p>
-            出生日期:
-            <input id="birthday" type="date">
-            <label id="birthday_trip"></label>
-        </p>
-        <p class="hobby">
-            兴趣爱好:
-            <input name="hobby" type="checkbox" value="read">阅读
-            <input name="hobby" type="checkbox" value="music">音乐
-            <input name="hobby" type="checkbox" value="sport">运动
-            <label id="hobby_trip"></label>
-        </p>
         <p style="text-align: center;">
-            <input class="button" onblur="checkForm()" onclick="return submitT()" type="submit" value="提交">
+            <input class="button" onclick="submitT()" type="button" value="提交">
             <input class="button" type="reset" value="重置">
         </p>
     </form>
