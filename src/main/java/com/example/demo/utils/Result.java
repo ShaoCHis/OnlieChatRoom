@@ -38,25 +38,6 @@ public class Result<T> implements Serializable {
         return result;
     }
 
-    public static <T> Result<T> wrapErrorResult(ServiceError error) {
-        Result<T> result = new Result<T>();
-        result.success = false;
-        result.code=0;
-        result.message = error.getMessage();
-        result.code=error.getCode();
-        result.timestamp=new Date();
-        return result;
-    }
-
-    public static <T> Result<T> wrapErrorResult(ServiceError error, Object... extendMsg) {
-        Result<T> result = new Result<T>();
-        result.success = false;
-        result.message = String.format(error.getMessage(), extendMsg);
-        result.code= error.getCode();
-        result.timestamp=new Date();
-        return result;
-    }
-
     public static <T> Result<T> wrapErrorResult(String message) {
         Result<T> result = new Result<T>();
         result.success = false;
