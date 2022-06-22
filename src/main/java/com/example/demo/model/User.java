@@ -27,18 +27,18 @@ public class User {
 
   private String url;
 
-  @OneToMany(mappedBy = "firstUser",fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
+  @OneToMany(mappedBy = "firstUser",fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
   Set<Friends> firstFriendsSet;
 
-  @OneToMany(mappedBy = "secondUser",fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
+  @OneToMany(mappedBy = "secondUser",fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
   Set<Friends> secondFriendsSet;
 
-  @OneToMany(mappedBy = "user",fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
+  @OneToMany(mappedBy = "user",fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
   Set<TotalMessage> totalMessageSet;
 
-  @OneToMany(mappedBy = "firstUser",fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
+  @OneToMany(mappedBy = "firstUser",fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
   Set<FriendMessage> firstFriendMessages;
 
-  @OneToMany(mappedBy = "secondUser",fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
+  @OneToMany(mappedBy = "secondUser",fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
   Set<FriendMessage> secondFriendMessages;
 }

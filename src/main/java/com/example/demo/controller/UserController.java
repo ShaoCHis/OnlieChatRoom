@@ -55,6 +55,10 @@ public class UserController {
   Result<User> updateUserInformation(@RequestBody User user){
     if(!userService.isPresent(user.getId())){
       return Result.wrapErrorResult("用户不存在！");
+    }else if (user.getAge()<0){
+      return Result.wrapErrorResult("年龄输入不合法");
+    }else if(user.getSex() != "男"&&user.getSex() != "女"){
+      return Result.wrapErrorResult("性别输入不合法");
     }
     return userService.updateUserInformation(user);
   }
